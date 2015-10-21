@@ -1,0 +1,51 @@
+{
+  "name": "zero-tactic",
+  "version": "0.0.9",
+  "keywords": [
+    "zero module",
+    "mars"
+  ],
+  "description": "Tactic is a GTD app.",
+  "zero": {
+    "dependencies": {
+      "bus": "~0.2.0",
+      "request": "~0.2.0",
+      "roof": "~0.0.1",
+      "taurus": "~0.0.1"
+    }
+  },
+  "author": {
+    "name": "sskyy"
+  },
+  "dependencies": {
+    "core-js": "~1.2.1",
+    "lodash": "~3.10.1",
+    "node-jsx": "~0.13.3",
+    "pbkdf2-sha256": "~1.1.1",
+    "randomstring": "~1.1.0",
+    "react": "*",
+    "react-dom": "~0.14.0",
+    "react-router": "~1.0.0-rc3",
+    "roof-zeroql": "~0.0.4"
+  },
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sskyy/zero-mars-boilerplate.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sskyy/zero-mars-boilerplate/issues"
+  },
+  "homepage": "https://github.com/sskyy/zero-mars-boilerplate#readme",
+  "readme": "# Zero Mars Boilerplate #",
+  "readmeFilename": "README.md",
+  "gitHead": "76fd22b64b1280dbd3284accd10649710f5acb9e",
+  "_id": "zero-mars-boilerplate@0.0.9",
+  "_shasum": "703db47a54d03784523eafa726f56908c1039acf",
+  "_from": "zero-mars-boilerplate@latest"
+}
