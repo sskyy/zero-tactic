@@ -1,10 +1,10 @@
 var Roof = require('roof-zeroql')
 
 module.exports = Roof.createContainer({
-  name : 'Post',
+  name : 'Task',
   queries : {
-    post : `
-      Post{
+    task : `
+      Task{
         content,
         User created{
           name

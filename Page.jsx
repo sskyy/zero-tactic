@@ -61,7 +61,7 @@ var  Page = React.createClass({
     </head>
     <body>
     {entryNode}
-    <script src={`/${this.props.base}/vendor/cdn-react0.13.3.js`}></script>
+    <script src={`/${this.props.base}/vendor/react.min.js`}></script>
     <script src={`/${this.props.base}/common.js`}></script>
     <script src={`/${this.props.base}/${this.props.name}.js`}></script>
     <script dangerouslySetInnerHTML = {{__html:mountScript}}></script>

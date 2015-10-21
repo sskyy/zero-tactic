@@ -19,14 +19,14 @@
   },
   "dependencies": {
     "core-js": "~1.2.1",
+    "history": "~1.12.5",
     "lodash": "~3.10.1",
     "node-jsx": "~0.13.3",
     "pbkdf2-sha256": "~1.1.1",
     "randomstring": "~1.1.0",
-    "react": "*",
+    "react": "~0.14.x",
     "react-dom": "~0.14.0",
-    "react-router": "~1.0.0-rc3",
-    "roof-zeroql": "~0.0.4"
+    "react-router": "~1.0.0-rc3"
   },
   "main": "index.js",
   "devDependencies": {},

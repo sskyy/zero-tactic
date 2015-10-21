@@ -14,18 +14,18 @@ module.exports = {
           require('./common/types/user.js')
         ]
       },
-      //tactic : {
-      //  serverEvents : [
-      //    require('./entries/tactic/events/server')
-      //  ],
-      //  types : [
-      //    require('./common/types/user.js'),
-      //    require('./common/types/task.js')
-      //  ],
-      //  context: function(){
-      //    return { user :  (this.session && this.session.user)||{} }
-      //  }
-      //}
+      tactic : {
+        serverEvents : [
+          require('./entries/tactic/events/server')
+        ],
+        types : [
+          require('./common/types/user.js'),
+          require('./common/types/task.js')
+        ],
+        context: function(){
+          return { user :  (this.session && this.session.user)||{} }
+        }
+      }
     }
   },
   assets : [{

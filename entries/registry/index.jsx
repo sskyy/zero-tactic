@@ -8,7 +8,7 @@ var Login = require('./components/Login.jsx')
 require('./index.less')
 
 module.exports = Roof.createRootContainer({
-  backend : '/taurus/mars-bbs/query',
+  backend : '/taurus/tactic/query',
   types : [
     require('../../common/types/user.js'),
   ],
