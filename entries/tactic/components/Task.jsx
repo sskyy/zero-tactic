@@ -23,7 +23,7 @@ module.exports = Roof.createContainer({
   remove : function(){
     if( ! confirm('确定删除?') ) return false
 
-    this.bus.fire('post.remove', this.props.post.get('id')).catch(e=>{
+    this.bus.fire('task.remove', this.props.task.get('id')).catch(e=>{
       console.log(e)
       alert('删除失败')
     })
@@ -31,8 +31,8 @@ module.exports = Roof.createContainer({
   saveUpdate : function(e){
     if( e.which !== 13) return
 
-    this.bus.fire('post.update',{
-      id: this.props.post.get('id'),
+    this.bus.fire('task.update',{
+      id: this.props.task.get('id'),
       content : this.refs.updateInput.getDOMNode().value
     }).then(()=>{
       this.setState({updateMode:false})
@@ -44,21 +44,18 @@ module.exports = Roof.createContainer({
   },
   render : function(){
     var actionNodes = []
-    if( context.user && context.user.id === this.props.post.getRelative('created').get('id')){
+    if( context.user && context.user.id === this.props.task.getRelative('created').get('id')){
       actionNodes.push(<a onClick={this.updateMode}>update</a>)
-      actionNodes.push(<a onClick={this.remove.bind(this,this.props.post.get('id'))}>remove</a>)
+      actionNodes.push(<a onClick={this.remove.bind(this,this.props.task.get('id'))}>remove</a>)
     }
 
     var contentNode = this.state.updateMode ?
-      <input onKeyUp = {this.saveUpdate} placeholder={this.props.post.get('content')} ref='updateInput'/> :
-      this.props.post.get('content')
+      <input onKeyUp = {this.saveUpdate} placeholder={this.props.task.get('content')} ref='updateInput'/> :
+      this.props.task.get('content')
 
-    return <div className='post'>
+    return <div className='task'>
     <div className='content'>
       {contentNode}
-      </div>
-      <div className='author'>
-        created by {this.props.post.getRelative('created').get('name')}
       </div>
       <div className='actions'>
         {actionNodes}

@@ -4,6 +4,15 @@ var pbkdf2 = require('pbkdf2-sha256')
 var randomString = require('randomstring')
 var _ = require('lodash')
 
+function without( obj ){
+  var keysToDelete = Array.prototype.slice.call( arguments, 1 )
+  var result = _.clone(obj)
+  keysToDelete.forEach(function(key){
+    delete result[key]
+  })
+  return result
+}
+
 
 module.exports = function (galaxies) {
   return {
@@ -47,7 +56,8 @@ module.exports = function (galaxies) {
         return this.error(406, {msg: 'wrong password or name.'})
       }
 
-      this.req.session.user = _.without(candidate, 'password')
+
+      this.req.session.user = without(candidate.toObject(), 'password')
       console.log('set session', this.req.session)
       this.data.set('user.login.result', this.req.session.user)
     }

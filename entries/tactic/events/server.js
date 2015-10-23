@@ -2,9 +2,9 @@
 
 module.exports = function (galaxies) {
   return {
-    'post.create' : function *createPost(postData){
+    'task.create' : function *createTask(taskData){
       var User = galaxies.getNodeClass('User')
-      var Post = galaxies.getNodeClass('Post')
+      var Task = galaxies.getNodeClass('Task')
 
       if( !this.req.session.user || !this.req.session.user.id ) {
         return this.error(403,{msg:'you are not logged in'})
@@ -15,31 +15,31 @@ module.exports = function (galaxies) {
 
       //尝试优化性能,有主键的实例就可以代表当前实例了
 
-      var post = new Post(postData)
-      post.relate( creator, 'created', true)
-      return post.push()
+      var task = new Task(taskData)
+      task.relate( creator, 'created', true)
+      return task.push()
     },
-    'post.update'  : function *updatePost( postData ){
-      var Post = galaxies.getNodeClass('Post')
-      var post = yield Post.from(`Post(id:${postData.id}){ User created{id}}`)
+    'task.update'  : function *updateTask( taskData ){
+      var Task = galaxies.getNodeClass('Task')
+      var task = yield Task.from(`Task(id:${taskData.id}){ User created{id}}`)
 
-      if( this.req.session.user.id !== post.getRelative('created').get('id') ){
-        return this.error('406',{msg:'you are not authorized to update this post.'})
+      if( this.req.session.user.id !== task.getRelative('created').get('id') ){
+        return this.error('406',{msg:'you are not authorized to update this task.'})
       }
 
-      post.set('content',postData.content)
-      return post.push()
+      task.set('content',taskData.content)
+      return task.push()
     },
-    'post.remove'  : function *removePost( id ){
-      var Post = galaxies.getNodeClass('Post')
-      var post = yield Post.from(`Post(id:${postData.id}){ User created{id}}`)
+    'task.remove'  : function *removeTask( id ){
+      var Task = galaxies.getNodeClass('Task')
+      var task = yield Task.from(`Task(id:${taskData.id}){ User created{id}}`)
 
-      if( this.req.session.user.id !== post.getRelative('created').get('id') ){
-        return this.error('406',{msg:'you are not authorized to update this post.'})
+      if( this.req.session.user.id !== task.getRelative('created').get('id') ){
+        return this.error('406',{msg:'you are not authorized to update this task.'})
       }
 
-      post.destroy()
-      return post.push()
+      task.destroy()
+      return task.push()
     }
   }
 };

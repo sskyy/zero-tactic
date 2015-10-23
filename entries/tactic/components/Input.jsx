@@ -7,18 +7,22 @@ module.exports = Roof.createContainer({
   onKeyUp : function(e){
     if(e.which !== 13) return
 
-    var post = {content:this.state.content }
-    this.bus.fire('post.create',post).then(function(){
+    var task = {content:this.state.content }
+    this.bus.fire('task.create',task).then(function(){
       //alert('post created.')
     }).catch(function(e){
       console.error(e)
-      alert('post failed.')
+      if( e.code === 403 ){
+        window.location.href='/tactic/registry.html'
+      }else{
+        alert('task failed.')
+      }
     })
 
   },
   render: function () {
-    return <div className='post-input'>
-      <textarea onKeyUp={this.onKeyUp} onChange = {this.onChange} placeholder="What's new today?"/>
+    return <div className='task-input'>
+      <input onKeyUp={this.onKeyUp} onChange = {this.onChange} placeholder="What's new today?"/>
     </div>
   }
 })

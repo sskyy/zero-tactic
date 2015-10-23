@@ -16,16 +16,11 @@ module.exports = Roof.createContainer({
   },
   render : function(){
     return <div>
-        {this.props.tasks.map(function(post){
-          return <Task key={post.get('id')} post={post}></Task>
+        {this.props.tasks.map(function(task){
+          return <Task key={task.get('id')} task={task}></Task>
         })}
 
 
-      <Pagination
-          total={this.props.tasks.total}
-          limit={this.props.tasks.limit}
-          offset={this.props.tasks.offset}
-          onChange={this.gotoPage} />
     </div>
   }
 })

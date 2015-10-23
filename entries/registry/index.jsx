@@ -7,7 +7,7 @@ var Login = require('./components/Login.jsx')
 
 require('./index.less')
 
-module.exports = Roof.createRootContainer({
+var exports = Roof.createRootContainer({
   backend : '/taurus/tactic/query',
   types : [
     require('../../common/types/user.js'),
@@ -22,3 +22,10 @@ module.exports = Roof.createRootContainer({
     </div>
   }
 })
+
+
+if( typeof window !== undefined ){
+  window.Entry = exports
+}
+
+module.exports = exports
